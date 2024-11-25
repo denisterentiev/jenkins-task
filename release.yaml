@@ -1,0 +1,12 @@
+name: batch-create
+version: 53-20241122082608
+description: Release Candidate for batch-createwrapper
+ 
+application:
+  name: batch-createwrapper
+  repository: releases
+  path: com/sony/tech/batch
+  commit: fcb3f9f1e44
+  version: 2.4.1
+  scm: ssh://git@bitbucket.rxpdev.com:7999/BATCH/create-code.git
+  language: java
