@@ -5,11 +5,9 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 script {
-                    // URL of the public Git repository and the specific YAML file path
                     def gitRepoUrl = 'https://github.com/denisterentiev/jenkins-task.git'
-                    def yamlFilePath = 'path/to/your-file.yaml'
+                    def yamlFilePath = 'release.yaml'
 
-                    // Clone the Git repository
                     git url: gitRepoUrl
 
                     // Ensure the YAML file exists in the workspace
@@ -23,7 +21,7 @@ pipeline {
             steps {
                 script {
                     // Path to the YAML file
-                    def yamlFile = 'path/to/your-file.yaml'
+                    def yamlFile = 'release.yaml'
 
                     // Read the YAML file
                     def yamlData = readYaml file: yamlFile
@@ -33,9 +31,9 @@ pipeline {
 
                     // Example: Access a specific field in the YAML file
                     if (yamlData.someKey) {
-                        echo "Value of someKey: ${yamlData.someKey}"
+                        echo "commit: ${yamlData.someKey}"
                     } else {
-                        echo "someKey not found in the YAML file"
+                        echo 'someKey not found in the YAML file'
                     }
                 }
             }
