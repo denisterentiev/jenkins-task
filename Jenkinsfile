@@ -25,6 +25,8 @@ pipeline {
                     echo "release file contents: ${release}"
                     echo "Application params: ${release.application}"
                     echo "commit: ${release.application.commit}"
+                    echo "version: ${release.application.version}"
+                    echo "name: ${release.application.name}"
                 }
             }
         }
