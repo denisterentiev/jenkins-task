@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
+        stage('Clone repo') {
             steps {
                 script {
                     def gitRepoUrl = 'https://github.com/denisterentiev/jenkins-task.git'
                     def yamlFilePath = 'release.yaml'
 
-                    git url: gitRepoUrl
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/denisterentiev/jenkins-task.git']])
 
                     // Ensure the YAML file exists in the workspace
                     if (!fileExists(yamlFilePath)) {
@@ -17,6 +17,16 @@ pipeline {
                 }
             }
         }
+        stage('Read YAML File') {
+            steps {
+                script {
+                    // Path to the YAML file
+                    release = readYaml file: 'release.yaml'
+                    echo "release file contents: ${release}"
+                    echo "Application params: ${release.application}"
+                    echo "commit: ${release.application.commit}"
+                }
+            }
+        }
     }
 }
-
