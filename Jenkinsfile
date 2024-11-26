@@ -17,27 +17,6 @@ pipeline {
                 }
             }
         }
-        stage('Read YAML File') {
-            steps {
-                script {
-                    // Path to the YAML file
-                    def yamlFile = 'release.yaml'
-
-                    // Read the YAML file
-                    def yamlData = readYaml file: yamlFile
-
-                    // Print the contents of the YAML file
-                    echo "YAML Data: ${yamlData}"
-
-                    // Example: Access a specific field in the YAML file
-                    if (yamlData.someKey) {
-                        echo "commit: ${yamlData.someKey}"
-                    } else {
-                        echo 'someKey not found in the YAML file'
-                    }
-                }
-            }
-        }
     }
 }
 
