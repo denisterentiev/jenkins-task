@@ -8,5 +8,5 @@ application:
   path: com/sony/tech/batch
   commit: fcb3f9f1e43
   version: 2.4.1
-  scm: ssh://git@bitbucket.rxpdev.com:7999/BATCH/create-code.git
+  scm: ssh://git@github.dev.com:7999/BATCH/create-code.git
   language: java
