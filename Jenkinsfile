@@ -8,7 +8,7 @@ pipeline {
                     def gitRepoUrl = 'https://github.com/denisterentiev/jenkins-task.git'
                     def yamlFilePath = 'release.yaml'
 
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/denisterentiev/jenkins-task.git']])
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: "${gitRepoUrl}"]])
 
                     // Ensure the YAML file exists in the workspace
                     if (!fileExists(yamlFilePath)) {
@@ -27,7 +27,7 @@ pipeline {
                     echo "commit: ${release.application.commit}"
                     echo "version: ${release.application.version}"
                     echo "name: ${release.application.name}"
-                    echo "Printing value only."
+                    echo 'Printing value only.'
                     echo "${release.application.commit}"
                 }
             }
