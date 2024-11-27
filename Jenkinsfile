@@ -23,12 +23,12 @@ pipeline {
                     // Path to the YAML file
                     release = readYaml file: 'release.yaml'
                     commitValue = release.application.commit
-                    echo "release file contents: ${release}"
-                    echo "Application params: ${release.application}"
-                    echo "commit: ${release.application.commit}"
-                    echo "version: ${release.application.version}"
-                    echo "name: ${release.application.name}"
-                    echo 'Printing value only.'
+                    println "release file contents: ${release}"
+                    println "Application params: ${release.application}"
+                    println "commit: ${release.application.commit}"
+                    println "version: ${release.application.version}"
+                    println "name: ${release.application.name}"
+                    println 'Printing value only.'
                     println(commitValue)
                 }
             }
