@@ -23,6 +23,7 @@ pipeline {
                     // Path to the YAML file
                     release = readYaml file: 'release.yaml'
                     commitValue = release.application.commit
+                    versionValue = release.application.version
                     println "release file contents: ${release}"
                     println "Application params: ${release.application}"
                     println "commit: ${release.application.commit}"
@@ -36,7 +37,10 @@ pipeline {
         stage('Running job with params from the last job') {
             steps {
                 script {
-                    build job: 'jenkins_second_param', parameters:[string(name: 'commitValue', value: commitValue)]
+                    build job: 'jenkins_second_param', parameters:[
+                        string(name: 'commitValue', value: commitValue),
+                        string(name: 'versionValue', value: versionValue)
+                        ]
                 }
             }
         }
