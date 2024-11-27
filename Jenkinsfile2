@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'commitValue', defaultValue: 'any_value', description: 'Bla')
+        string(name: 'versionValue', defaultValue: 'any_version', description: 'BlaVer')
+    }
+    stages {
+        stage('Print last commit value from parent job') {
+            steps {
+                script {
+                    println(commitValue)
+                    println(versionValue)
+                }
+            }
+        }
+    }
+}
