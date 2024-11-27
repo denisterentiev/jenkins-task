@@ -36,7 +36,7 @@ pipeline {
         stage('Running job with params from the last job') {
             steps {
                 script {
-                    build job: 'jenkins_second_param', parameters: [string(name: 'Commit', value: (commitValue))]
+                    build job: 'jenkins_second_param', parameters:[string(name: 'commitValue', value: 'commitValue')]
                 }
             }
         }
