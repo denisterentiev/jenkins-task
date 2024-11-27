@@ -34,7 +34,11 @@ pipeline {
             }
         }
         stage('Running job with params from the last job') {
-            build job: 'jenkins_second_param', parameters: [[$class: 'StringParameterValue', commitName: 'Commit', value: commitValue]]
+            steps {
+                script {
+                    build job: 'jenkins_second_param', parameters: [[$class: 'StringParameterValue', commitName: 'Commit', value: commitValue]]
+                }
+            }
         }
     }
 }
