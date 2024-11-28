@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'start_value', defaultValue: '1', description: 'starting loop from 1')
+        string(name: 'end_value', defaultValue: '40', description: 'end value')
+    }
+    stages {
+        stage('testing loop') {
+            steps {
+                println 'Startting from ' + (start_value) + ' to ' + (end_value)
+                println(start_value)
+                script {
+                    def x = start_value.toInteger()
+                    def y = end_value.toInteger()
+                    for (i = x; i <= (y); i++) {
+                        println "Printing the ${i} out of " + y
+                    }
+                }
+            }
+        }
+    }
+}
