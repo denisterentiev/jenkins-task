@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+        stages {
+            stage('Get todays date') {
+                steps {
+                script {
+                    println '=====Getting todays date into a variable====='
+                    date_now = sh(script: 'date', returnStdout: true).trim()
+                    dateArray = []
+                }
+                }
+            }
+            stage('Working with array') {
+                steps {
+                script {
+                    println '=====Displaying raw data string====='
+                    println(date_now)
+                    println '=====Pushing splitted values to array====='
+                    date_now.split().each {
+                        dateArray << it
+                    }
+                    println '=====Printing data from array====='
+                    println(dateArray)
+                    println '=====Printing custom date from array DD MMM YYYY====='
+                    println dateArray[2] + ' ' + dateArray[1] + ' ' + dateArray[5]
+                }
+            }
+        }
+    }
+}
